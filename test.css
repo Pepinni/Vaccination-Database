@@ -1,0 +1,89 @@
+/* Responsive Full Background Image Using CSS
+ * Tutorial URL: http://sixrevisions.com/css/responsive-background-image/
+*/
+body {
+    /* Location of the image */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.712), rgba(0, 0, 0, 0.671)), url(public/css/images/campus2.jpg);
+    
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+       the content height is greater than the image height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+    
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
+    
+    /* SHORTHAND CSS NOTATION
+     * background: url(background-photo.jpg) center center cover no-repeat fixed;
+     */
+     
+  }
+  
+  /* For mobile devices */
+  @media only screen and (max-width: 767px) {
+    body {
+      /* The file size of this background image is 93% smaller
+       * to improve page load speed on mobile internet connections */
+       background-image: linear-gradient(rgba(0, 0, 0, 0.712), rgba(0, 0, 0, 0.671)), url(public/css/images/campus2.jpg);    }
+      }
+
+.heading-banner {
+    width: 80%;
+    color: #fff;
+    margin : 50px auto;
+    text-align: center;
+}
+.table {
+    margin : 50px 0;
+    color: #fff;
+}
+.heading-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+.title-emphasis {
+    color: rgb(255, 192, 236);
+    font-size: 40px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.sign-block {
+    text-align: center;
+}
+
+.sign-in {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.info {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+.sign-in-text , .sign-in-text:visited , .sign-in-text:hover , .sign-in-text:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media only screen and (max-width : 768px){
+    .heading-title {
+        font-weight: 600;
+        font-size: 40px;
+    }
+    .title-emphasis {
+        font-size: 25px;
+        font-weight: bold;
+    }
+}
