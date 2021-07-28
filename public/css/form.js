@@ -41,7 +41,6 @@ $(function(){
             requiredCheckboxes.removeAttr('required');
         } else {
             requiredCheckboxes.attr('required', 'required');
-            alert("Required");
         }
     });
 });

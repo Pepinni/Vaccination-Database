@@ -1,52 +1,56 @@
 body {
-    background-color: #fef9f8;
+  background-color: #fef9f8;
 }
 .question {
-    margin-top: 40px;
-    font-family: 'Montserrat', cursive;
-    text-align: center;
+  margin-top: 40px;
+  font-family: "Montserrat", cursive;
+  text-align: center;
 }
 .form-container {
-    padding: 20px 20px;
-    border-style:dashed; 
-    width:80%;
-    margin: 40px auto;
-    border-radius: 20px;
-    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
-    /* background-color: #ef9273; */
+  padding: 20px 20px;
+  border-style: dashed;
+  width: 80%;
+  margin: 40px auto;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+  /* background-color: #ef9273; */
 }
 
 /* Form */
 
 .checks {
-    margin : 20px;
-    font-size: 30px;
+  margin: 20px;
+  font-size: 30px;
 }
-@media screen and (max-width: 480px){
-    .checks {
-        font-size: 15px;
-    }   
+@media screen and (max-width: 480px) {
+  .checks {
+    font-size: 15px;
+  }
+  label{
+      margin-top:10px;
+  }
 }
 input[type="checkbox"] {
-    width : 20px;
-    height : 20px;
+  position: absolute;
+  margin-top: 13px;
+  width: 20px;
+  height: 20px;
+}
+input[type="checkbox"] ~ label {
+  padding-left: 1.4em;
+  display: inline-block;
 }
 
 .form-submit {
-    margin:15px auto 0;
-    width : 70%;
+  margin: 15px auto 0;
+  width: 70%;
 }
 .form-floating {
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: #ef9273;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #ef9273;
 }
 
-.form-floating{
-    display: none;
+.form-floating {
+  display: none;
 }
-
-
-
-
-
