@@ -27,31 +27,32 @@
 <body>
     <h1 class="question">If you are Vaccinated Kindly fill the form</h1>
   <div class="form-container">
-    <form>
+    <form action="/submit" method="POST">
 
       <!-- ///////////Check Boxes ////////////// -->
       <div class="row checks">
         <div class="col">
-          <input type="checkbox" name="partial-vaccinated" class="partial-check" onchange="valueChanged()" checked>
+          <input name="presentState" value="Partially Vaccinated" type="checkbox" class="partial-check" onchange="valueChanged()" required oninvalid="this.setCustomValidity('You must be at least partially vaccinate to submit this form')">
           <label for="level-of-vaccination">Partially Vaccinated</label>
         </div>
         <div class="col">
-          <input type="checkbox" name="fully-vaccinated" class="fully-check" onchange="valueChanged()">
+          <input name="presentState" value="Fully Vaccinated" type="checkbox" class="fully-check" onchange="valueChanged()" required oninvalid="this.setCustomValidity('check plz')">
           <label for="level-of-vaccination">Fully Vaccinated</label>
         </div>
       </div>
 
       <!-- form fields -->
       <div class="row g-2 form-block">
+
         <!-- Year -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+            <select name="year" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
               <option>Click to choose</option>
-              <option value="1">B.Tech 2021</option>
-              <option value="2">B.Tech 2020</option>
-              <option value="3">B.Tech 2019</option>
-              <option value="3">B.Tech 2018</option>
+              <option value="B.Tech 2021">B.Tech 2021</option>
+              <option value="B.Tech 2020">B.Tech 2020</option>
+              <option value="B.Tech 2019">B.Tech 2019</option>
+              <option value="B.Tech 2018">B.Tech 2018</option>
             </select>
             <label for="floatingSelectGrid">Program/Year</label>
           </div>
@@ -59,11 +60,11 @@
         <!-- Brand -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+            <select name="brand" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
               <option selected>Click to choose</option>
-              <option value="1">Astra Zeneca Covshield</option>
-              <option value="2">Bharat Biotech Covaxin</option>
-              <option value="3">Other</option>
+              <option value="AstraZeneca Covshield">AstraZeneca Covshield</option>
+              <option value="Bharat Biotech Covaxin">Bharat Biotech Covaxin</option>
+              <option value="Other">Other</option>
             </select>
             <label for="floatingSelectGrid">Name of Vaccine</label>
           </div>
@@ -71,7 +72,7 @@
         <!-- First dose date -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input type="date" class="form-control" id="floatingInputGrid" placeholder="Date of first dose"
+            <input name="firstDate" type="date" class="form-control" id="floatingInputGrid" placeholder="Date of first dose"
               value="Date">
             <label for="floatingInputGrid">Date of first dose</label>
           </div>
@@ -79,67 +80,67 @@
         <!-- Due date for next date -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input type="date" class="form-control" id="floatingInputGrid" placeholder="Next due date" value="date">
+            <input name="secondDate" type="date" class="form-control" id="floatingInputGrid" placeholder="Next due date" value="date">
             <label for="floatingInputGrid" id="next-date">Next due date</label>
           </div>
         </div>
         <!-- Beneficiary Reference ID -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInputGrid" placeholder="Beneficiary Reference ID">
+            <input name="refId" type="text" class="form-control" id="floatingInputGrid" placeholder="Beneficiary Reference ID">
             <label for="floatingInputGrid">14-digit Beneficiary Reference ID</label>
           </div>
         </div>
-        <!-- State of Vaccination -->
+        <!-- Place of Vaccination -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+            <select name="place" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
               <!-- States -->
               <option>Click to chose</option>
-              <option value="3">Andaman and Nicobar Islands </option>
-              <option value="1">Andhra Pradesh</option>
-              <option value="2">Arunachal Pradesh</option>
-              <option value="3">Assam</option>
-              <option value="3">Bihar</option>
-              <option value="3">Chandigarh </option>
-              <option value="3">Chhattisgarh</option>
-              <option value="3"> Dadra & Nagar Haveli and Daman & Diu</option>
-              <option value="3"> Delhi</option>
-              <option value="3">Goa</option>
-              <option value="3">Gujarat</option>
-              <option value="3">Haryana</option>
-              <option value="3">Himachal Pradesh</option>
-              <option value="3">Jammu and Kashmir </option>
-              <option value="3">Jharkhand</option>
-              <option value="3">Karnataka</option>
-              <option value="3">Kerala</option>
-              <option value="3"> Ladakh</option>
-              <option value="3"> Lakshadweep</option>
-              <option value="3">Madhya Pradesh </option>
-              <option value="3">Maharashtra</option>
-              <option value="3">Manipur</option>
-              <option value="3">Meghalaya</option>
-              <option value="3">Mizoram</option>
-              <option value="3">Nagaland</option>
-              <option value="3">Odisha</option>
-              <option value="3"> Puducherry</option>
-              <option value="3">Punjab</option>
-              <option value="3">Rajasthan</option>
-              <option value="3">Sikkim</option>
-              <option value="3">Tamil Nadu</option>
-              <option value="3">Telangana</option>
-              <option value="3">Tripura</option>
-              <option value="3">Uttar Pradesh</option>
-              <option value="3">Uttarakhand</option>
-              <option value="3">West Bengal</option>
+              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands </option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh </option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Dadra & Nagar Haveli and Daman & Diu"> Dadra & Nagar Haveli and Daman & Diu</option>
+              <option value="Delhi"> Delhi</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Harayana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu and Kashmir">Jammu and Kashmir </option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Ladakh"> Ladakh</option>
+              <option value="Lakshadweep"> Lakshadweep</option>
+              <option value="Madhya Pradesh">Madhya Pradesh </option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Puducherry"> Puducherry</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
 
             </select>
             <label for="floatingSelectGrid">Place of Vaccination</label>
           </div>
         </div>
-        <div class="d-grid gap-2 form-submit">
-          <button type="button" class="btn btn-outline-success">Submit</button>
-        </div>
+      </div>
+      <div class="d-grid gap-2 form-submit">
+        <button type="submit" class="btn btn-outline-success">Submit</button>
       </div>
     </form>
   </div>

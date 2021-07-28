@@ -32,7 +32,7 @@ body {
     body {
       /* The file size of this background image is 93% smaller
        * to improve page load speed on mobile internet connections */
-       background-image: linear-gradient(rgba(0, 0, 0, 0.712), rgba(0, 0, 0, 0.671)), url(/images/campus2.jpg);    }
+       background-image: linear-gradient(rgba(0, 0, 0, 0.712), rgba(0, 0, 0, 0.671)), url(images/campus2.jpg);    }
       }
 
 .heading-banner {

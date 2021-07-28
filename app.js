@@ -100,7 +100,7 @@ app.get('/form', function(req,res){
     if(req.isAuthenticated()){
         res.render('form');
     }else{
-        res.redirect('/login');
+        res.redirect('/');
     }
 });
 
@@ -110,43 +110,52 @@ app.get('/logout', function(req,res){
 })
 
 ///////       Post Methods        //////////
-app.post('/register', function(req,res){
-    const username = req.body.username;
-    const password = req.body.password;
 
-    User.register({username : username, email : username}, password, function(err, user){
-        if(err){
-            console.log(err);
-            res.redirect('/register');
-        }else{
-            passport.authenticate("local")(req,res,function(){
-                res.redirect("/secrets");
-            })
-        }
-    })
+
+app.post('/submit', function(req,res){
+    console.log(req.body);
 })
-
-app.post('/login', function(req,res){
-
-    const user = new User({
-        username : req.body.username,
-        password : req.body.password,
-        email : req.body.username,
-        provider : "google"
-    });
-
-    req.login(user,function(err){
-        if(err){
-            console.log(err);
-        }else{
-            passport.authenticate("local")(request, result,res,function(){
-                res.redirect('/secrets');
-            })
-        }
-    })
-})
-
 const port = 3000
 app.listen(port, function(){
     console.log("Server running on port " + String(port));
 });
+
+
+
+
+// app.post('/login', function(req,res){
+    
+//     const user = new User({
+//         username : req.body.username,
+//         password : req.body.password,
+//         email : req.body.username,
+//         provider : "google"
+//     });
+    
+//     req.login(user,function(err){
+//         if(err){
+//             console.log(err);
+//         }else{
+//             passport.authenticate("local")(request, result,res,function(){
+//                 res.redirect('/secrets');
+//             })
+//         }
+//     })
+// })
+
+
+// app.post('/register', function(req,res){
+    //     const username = req.body.username;
+    //     const password = req.body.password;
+    
+//     User.register({username : username, email : username}, password, function(err, user){
+//         if(err){
+//             console.log(err);
+//             res.redirect('/register');
+//         }else{
+//             passport.authenticate("local")(req,res,function(){
+//                 res.redirect("/secrets");
+//             })
+//         }
+//     })
+// })
