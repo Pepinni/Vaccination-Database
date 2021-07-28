@@ -25,30 +25,33 @@
 </head>
 
 <body>
-    <h1 class="question">If you are Vaccinated Kindly fill the form</h1>
+  <h1 class="question">If you are Vaccinated Kindly fill the form</h1>
   <div class="form-container">
-    <form action="/submit" method="POST">
+    <form action="/submit" method="POST" class="needs-validation" >
 
       <!-- ///////////Check Boxes ////////////// -->
       <div class="row checks">
         <div class="col">
-          <input name="presentState" value="Partially Vaccinated" type="checkbox" class="partial-check" onchange="valueChanged()" required oninvalid="this.setCustomValidity('You must be at least partially vaccinate to submit this form')">
+          <input name="presentState" value="Partially Vaccinated" type="checkbox" class="partial-check checkbox"
+            onchange="valueChanged()" required>
           <label for="level-of-vaccination">Partially Vaccinated</label>
         </div>
         <div class="col">
-          <input name="presentState" value="Fully Vaccinated" type="checkbox" class="fully-check" onchange="valueChanged()" required oninvalid="this.setCustomValidity('check plz')">
+          <input name="presentState" value="Fully Vaccinated" type="checkbox" class="fully-check checkbox"
+            onchange="valueChanged()" required>
           <label for="level-of-vaccination">Fully Vaccinated</label>
         </div>
       </div>
 
-      <!-- form fields -->
+      <!-- form block -->
       <div class="row g-2 form-block">
 
         <!-- Year -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select name="year" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-              <option>Click to choose</option>
+            <select name="year" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
+              required>
+              <option disabled selected value>Choose an option</option>
               <option value="B.Tech 2021">B.Tech 2021</option>
               <option value="B.Tech 2020">B.Tech 2020</option>
               <option value="B.Tech 2019">B.Tech 2019</option>
@@ -60,8 +63,9 @@
         <!-- Brand -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select name="brand" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-              <option selected>Click to choose</option>
+            <select name="brand" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
+              required>
+              <option disabled selected value>Choose an option</option>
               <option value="AstraZeneca Covshield">AstraZeneca Covshield</option>
               <option value="Bharat Biotech Covaxin">Bharat Biotech Covaxin</option>
               <option value="Other">Other</option>
@@ -72,31 +76,33 @@
         <!-- First dose date -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input name="firstDate" type="date" class="form-control" id="floatingInputGrid" placeholder="Date of first dose"
-              value="Date">
+            <input name="firstDate" type="date" class="form-control" id="floatingInputGrid"
+              placeholder="Date of first dose" value="Date" required>
             <label for="floatingInputGrid">Date of first dose</label>
           </div>
         </div>
         <!-- Due date for next date -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input name="secondDate" type="date" class="form-control" id="floatingInputGrid" placeholder="Next due date" value="date">
+            <input name="secondDate" type="date" class="form-control" id="floatingInputGrid" placeholder="Next due date"
+              value="date" required>
             <label for="floatingInputGrid" id="next-date">Next due date</label>
           </div>
         </div>
         <!-- Beneficiary Reference ID -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <input name="refId" type="text" class="form-control" id="floatingInputGrid" placeholder="Beneficiary Reference ID">
+            <input name="refId" type="text" maxlength="14" minlength="14" class="form-control" id="floatingInputGrid"
+              placeholder="Beneficiary Reference ID" required>
             <label for="floatingInputGrid">14-digit Beneficiary Reference ID</label>
           </div>
         </div>
         <!-- Place of Vaccination -->
         <div class="col-md-6 col-sm-12 col-lg-6">
           <div class="form-floating">
-            <select name="place" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+            <select name="place" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" required>
               <!-- States -->
-              <option>Click to chose</option>
+              <option disabled selected value>Choose an option</option>
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands </option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -139,6 +145,7 @@
           </div>
         </div>
       </div>
+      <!-- /////Submit Button////// -->
       <div class="d-grid gap-2 form-submit">
         <button type="submit" class="btn btn-outline-success">Submit</button>
       </div>
