@@ -32,12 +32,12 @@
       <!-- ///////////Check Boxes ////////////// -->
       <div class="row checks">
         <div class="col">
-          <input name="presentState" value="Partially Vaccinated" type="checkbox" class="partial-check checkbox"
+          <input name="presentState" value="partial" type="checkbox" class="partial-check checkbox"
             onchange="valueChanged()" required>
           <label for="level-of-vaccination" class="label-for-boxes">Partially Vaccinated</label>
         </div>
         <div class="col">
-          <input name="presentState" value="Fully Vaccinated" type="checkbox" class="fully-check checkbox"
+          <input name="presentState" value="full" type="checkbox" class="fully-check checkbox"
             onchange="valueChanged()" required>
           <label for="level-of-vaccination" class="label-for-boxes">Fully Vaccinated</label>
         </div>
@@ -52,10 +52,10 @@
             <select name="year" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
               required>
               <option disabled selected value>Choose an option</option>
-              <option value="B.Tech 2021">B.Tech 2021</option>
-              <option value="B.Tech 2020">B.Tech 2020</option>
-              <option value="B.Tech 2019">B.Tech 2019</option>
-              <option value="B.Tech 2018">B.Tech 2018</option>
+              <option value="21">B.Tech 2021</option>
+              <option value="20">B.Tech 2020</option>
+              <option value="19">B.Tech 2019</option>
+              <option value="18">B.Tech 2018</option>
             </select>
             <label for="floatingSelectGrid">Program/Year</label>
           </div>
@@ -66,8 +66,8 @@
             <select name="brand" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example"
               required>
               <option disabled selected value>Choose an option</option>
-              <option value="AstraZeneca Covshield">AstraZeneca Covshield</option>
-              <option value="Bharat Biotech Covaxin">Bharat Biotech Covaxin</option>
+              <option value="Covshield">AstraZeneca Covshield</option>
+              <option value="Covaxin">Bharat Biotech Covaxin</option>
               <option value="Other">Other</option>
             </select>
             <label for="floatingSelectGrid">Name of Vaccine</label>
