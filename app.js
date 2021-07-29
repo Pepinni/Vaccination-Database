@@ -147,14 +147,13 @@ function(req, res) {
 
 app.get('/form', function(req,res){
   if(req.isAuthenticated()){
-    res.render('form' ,{});
+    res.render('form' ,{presentState : req.user.presentState});
   }else{
     res.redirect('/');
   }
 });
 
 app.get('/logout', function(req,res){
-  req.logout();
   res.redirect('/');
 })
 

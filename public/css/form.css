@@ -1,10 +1,13 @@
 body {
-  background-color: #fef9f8;
+  background-color:  #fef9f8;
+  /* background-color: #EAE7DC; */
 }
 .question {
   margin-top: 40px;
-  font-family: "Montserrat", cursive;
+  font-family: "Patrik Hand", cursive;
   text-align: center;
+  font-weight: bold;
+  color : #b14825;
 }
 .form-container {
   padding: 20px 20px;
@@ -26,8 +29,8 @@ body {
   .checks {
     font-size: 15px;
   }
-  label{
-      margin-top:10px;
+  input[type="checkbox"] ~ label {
+    margin-top:10px;
   }
 }
 input[type="checkbox"] {
