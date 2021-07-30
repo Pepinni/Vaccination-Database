@@ -154,15 +154,13 @@ function(req, res) {
 
 app.get('/form', function(req,res){
   if(req.isAuthenticated()){
-    const name = req.user.name;
-    const num = Number;
+    var name = req.user.name;
     for(var i = 0; i<name.length; i++){
       if(name[i] === " "){
-          num = i;
           break;
       }
   };
-  var studentName = _.upperFirst(name.substr(1,num));
+  var studentName = _.upperFirst(name.substr(1,i));
     res.render('form' ,{presentState : req.user.presentState, studentName : studentName});
   }else{
     res.redirect('/');
