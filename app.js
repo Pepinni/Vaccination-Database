@@ -160,7 +160,7 @@ app.get('/form', function(req,res){
           break;
       }
   };
-  var studentName = _.upperFirst(name.substr(1,i));
+  var studentName = _.upperFirst(name.substr(0,i));
     res.render('form' ,{presentState : req.user.presentState, studentName : studentName});
   }else{
     res.redirect('/');
