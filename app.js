@@ -7,6 +7,7 @@ const ejs = require("ejs")
 const mongoose = require("mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
+const _ = require('lodash');
 require('https').globalAgent.options.rejectUnauthorized = false;
 
 ///////   Dependency requirements above    ///////
@@ -153,7 +154,15 @@ function(req, res) {
 
 app.get('/form', function(req,res){
   if(req.isAuthenticated()){
-    res.render('form' ,{presentState : req.user.presentState, studentName : req.user.name});
+    const name = req.user.name;
+    const num = Number;
+    for(var i = 0; i<name.length; i++){
+      if(name[i] === " "){
+          num = i;
+          break;
+      }
+  };
+    res.render('form' ,{presentState : req.user.presentState, studentName : _.upperFirst(name.substr(1,num))});
   }else{
     res.redirect('/');
   }
