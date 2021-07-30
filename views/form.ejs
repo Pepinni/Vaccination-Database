@@ -27,7 +27,9 @@
 <body>
   <% if(presentState==="full" ){%>
     <h1 class="question">You're fully vaccinated. Have a look at the stats.</h1>
-    <%} else {%>
+    <%}else if(presentState === "partial"){ %>
+      <h1 class="question">You are partially Vaccinated. If you are fully vaccinated then kindly update the database</h1>
+     <%}else {%>
       <h1 class="question">If you are vaccinated kindly fill the form</h1>
       <%}%>
         <% if(presentState==="full" ){%>
@@ -103,7 +105,7 @@
                       <!-- Beneficiary Reference ID -->
                       <div class="col-md-6 col-sm-12 col-lg-6">
                         <div class="form-floating">
-                          <input name="refId" type="text" maxlength="14" minlength="14" class="form-control"
+                          <input name="refId" type="number" maxlength="14" minlength="14" class="form-control"
                             id="floatingInputGrid" placeholder="Beneficiary Reference ID" required>
                           <label for="floatingInputGrid">Beneficiary Reference ID</label>
                         </div>

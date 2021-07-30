@@ -17,7 +17,8 @@ app.use(express.urlencoded({extended : true}));
 app.set('view engine', 'ejs')
 
 app.use(session({
-    secret : "Our little secret.",
+    // secret : "Our little secret.",
+    secret : process.env.SECRET,
     resave : false,
     saveUninitialized : false
 }));
@@ -25,7 +26,9 @@ app.use(session({
 app.use(passport.initialize()); 
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/usersDB", {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect("mongodb+srv://Piyush:ginniferpep123@cluster0.ewfh1.mongodb.net/usersDB",{ useNewUrlParser: true , useUnifiedTopology: true});
+// const pwd = process.env.PWD;
+mongoose.connect(String(process.env.PASS),{ useNewUrlParser: true , useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 
 
@@ -276,9 +279,8 @@ app.post('/submit', function(req,res){
   })
 })
 
-const port = 3000
-app.listen(port, function(){
-  console.log("Server running on port " + String(port));
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Server running on port 3000" );
 });
 
 // app.get('/logout', function(req,res){
