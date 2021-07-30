@@ -153,7 +153,7 @@ function(req, res) {
 
 app.get('/form', function(req,res){
   if(req.isAuthenticated()){
-    res.render('form' ,{presentState : req.user.presentState, studentName : res.user.name});
+    res.render('form' ,{presentState : req.user.presentState, studentName : req.user.name});
   }else{
     res.redirect('/');
   }
