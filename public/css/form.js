@@ -177,6 +177,7 @@ $.get('/yearwise', function(DATA){
       )
 });
 
+//////////Vaccine  Distribution ///////////
 $.get('/vaccine', function(DATA){
     const covishield = DATA.covishield;
     const covaxin = DATA.covaxin;
@@ -187,7 +188,7 @@ $.get('/vaccine', function(DATA){
     labels: labels,
     datasets: [{
         axis: 'y',
-        label: "My first Dataset",
+        // label: "My first Dataset",
         data: [covishield, covaxin, other],
         fill: false,
         backgroundColor: [
@@ -209,19 +210,21 @@ $.get('/vaccine', function(DATA){
         data,
         options : {
             indexAxis: 'y',
-            legend : {
-                display : false,
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.yLabel;
+                    }
+                }
             },
             plugins :{    
+                legend : {
+                    display : false,
+                },
                 title: {
                     display: true,
                     text: 'Vaccine Distribution'
                 },
-                deferred: {
-                    xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
-                    yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
-                    delay: 100000,    // delay of 500 ms after the canvas is considered inside the viewport
-                  }
             },
                 aspectRatio : 1,
             },
