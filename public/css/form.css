@@ -21,6 +21,9 @@ body {
 
 /* Form */
 
+.options {
+  text-align: center;
+}
 .checks {
   margin: 20px;
   font-size: 30px;
@@ -56,4 +59,18 @@ input[type="checkbox"] ~ label {
 
 .form-floating {
   display: none;
+}
+
+
+/* ///////////       Charts  //////////  */
+
+.stats {
+  width : 80%;
+  margin: 80px auto;
+  max-height: 100%;
+}
+
+
+.charts {
+  margin : 30px auto;
 }

@@ -1,22 +1,11 @@
-
-
+// ///////Only One checkkbox  /////////
 $("input:checkbox").on('click',function(){
     $("input:checkbox").not(this).prop('checked', false);
 })
 
-// $(".partial-check, .fully-check").on('click', function(){
-//     $(".form-block").slideToggle(500);
-// })
-
-// $(document).ready(function(){
-//     if($(".partial-check").is(":checked",false) && $(".fully-check").is(":checked",false)){
-//         $(".form-block").hide();
-//     }
-// });
-
-
+////// Hiding the form /////////////
 function valueChanged(){
-
+    
     if($('.partial-check').is(":checked"))   {
         $(".form-floating").show(700);
         $("#next-date").html(function(){
@@ -34,6 +23,7 @@ function valueChanged(){
     }
 }
 
+///////////At least One checkbox required /////////////
 $(function(){
     var requiredCheckboxes = $('.checkbox[required]');
     requiredCheckboxes.change(function(){
@@ -45,24 +35,147 @@ $(function(){
     });
 });
 
-// function valueChanged(){
+//////////////Pie chart for registered Users //////////////
+$.get('/total', function(DATA){
+    const registered = DATA.registered;
 
-//     if($('.partial-check').is(":checked"))   {
-//         $(".form-block").show(700);
-//         $("#next-date").html(function(){
-//             return "Next due date";
-//         })
-//     }
-//     else if ($(".fully-check").is(":checked")) {
-//         $(".form-block").show(700);
-//         $("#next-date").html(function(){
-//             return "Date of second dose";
-//         })
-//     }
-//     else{ 
-//         $('.form-block').hide(500);
-//     }
-// }
+    const data = {
+        labels: [
+            'Registered',
+            'Not registered',
+        ],
+        datasets: [{
+            label: 'Website Adoption',
+          data: [registered, 761-registered],
+          backgroundColor: [
+              'rgb(54, 162, 235)',
+              'rgb(255, 99, 132)',
+            ],
+          hoverOffset: 4,
+          
+        }]
+
+    };
+
+      const config = {
+          type: 'doughnut',
+        data: data,
+        options : {
+            plugins :{    title: {
+                    display: true,
+                    text: 'Website Adoption'
+                },},
+        }
+    };
+
+    var mychart = new Chart(
+          document.querySelector(".registered"),
+          config,
+          )
+        });
+
+////////////// Bar Graph for Yearwise vaccinated percentages/////////
+$.get('/yearwise', function(DATA){
+    const pb21 = DATA.part21;
+    const pb20 = DATA.part20;
+    const pb19 = DATA.part19;
+    const pb18 = DATA.part18;
+    const fb21 = DATA.full21;
+    const fb20 = DATA.full20;
+    const fb19 = DATA.full19;
+    const fb18 = DATA.full18;
+    const labels = ['B2021', 'B2020' , 'B2019' , 'B2018'];
+    const data = {
+    labels: labels,
+    datasets: [
+    {
+        label: 'Partially Vaccinated',
+        data: [pb21, pb20 , pb19, pb18],
+        backgroundColor: "rgb(255,99, 132, 0.4)",//Utils.CHART_COLORS.red,
+        borderColor: "rgb(255,99,132)",  
+        stack: 'Stack 0',
+    },
+    {
+        label: 'Fully Vaccinated',
+        data: [fb21 , fb20, fb19, fb18],
+        backgroundColor: "rgba(54, 162, 235, 0.4)",//Utils.CHART_COLORS.blue,
+        borderColor: "rgba(54, 162, 235)",  
+        stack: 'Stack 1',
+    }
+    ]
+};
+const config = {
+    type: 'bar',
+    data: data,
+    options: {
+        plugins: {
+        title: {
+            display: true,
+            text: '% Vaccinated'
+        },
+        },
+        responsive: true,
+        interaction: {
+        intersect: false,
+        },
+        scales: {
+        x: {
+            stacked: true,
+        },
+        y: {
+            stacked: true,
+        }
+        },
+        aspectRatio : 1,
+    },
+    };
+    var myChart = new Chart(
+        document.querySelector(".partial-full-bar"),
+        config,        
+    );
+})
+
+
+/////Pie chart for total IIT Mandi population/////////
+$.get('/yearwise', function(DATA){
+    const partial = DATA.part21+ DATA.part20+DATA.part19+DATA.part18;
+    const full = DATA.full21+ DATA.full20 + DATA.full19 + DATA.full18;
+    alert("Partial = " + String(partial) +" and full = " + String(full));
+
+    const data = {
+        labels: [
+          'Partially Vaccinated',
+          'Fully Vaccinated',
+          'Not Vaccinated'
+        ],
+        datasets: [{
+          label: 'Vaccinated ratio',
+          data: [partial, full, 761-(full+partial)],
+          backgroundColor: [
+              'rgb(54, 162, 235)',
+              'rgb(255, 99, 132)',
+              'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4,
+        }]
+      };
+
+      const config = {
+        type: 'doughnut',
+        data: data,
+        options : {
+            plugins :{    title: {
+                    display: true,
+                    text: 'B.Tech Vaccinated Ratio'
+                },},
+        }
+      };
+
+      var mychart = new Chart(
+          document.querySelector(".totalVaccinationStats"),
+          config,
+      )
+});
 
 
 

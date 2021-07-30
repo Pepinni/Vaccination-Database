@@ -128,7 +128,6 @@ User.find({}, function(err,foundUsers){
     
   });
   res.render('home', {part21:(part21/330)*100, full21:(full21/330)*100,part20:(part20/308)*100, full20:(full20/308)*100, part19:(part19/262)*100,full19:(full19/262)*100, part18:(part18/191)*100, full18:(full18/191)*100});
-  
 });
 });
 
@@ -153,10 +152,72 @@ app.get('/form', function(req,res){
   }
 });
 
-app.get('/logout', function(req,res){
-  res.redirect('/');
+
+// ///////// API for charts  //////////////
+app.get('/yearwise', function(req,res){
+  let part21 = 0;
+  let part20 = 0;
+  let part19 = 0;
+  let part18 = 0;
+  let full21 = 0;
+  let full20 = 0;
+  let full19 = 0;
+  let full18 = 0;
+
+  User.find({}, function(err,foundUsers){
+    foundUsers.forEach(function(user){
+      if(user.year === 21){
+        if(user.presentState === "partial"){
+          part21 = part21 + 1;
+        }else if(user.presentState === "full"){
+          full21 = full21 + 1;
+        }
+      }
+      else if(user.year === 20){
+        if(user.presentState === "partial"){
+          part20 = part20 + 1;
+        }else if(user.presentState === "full"){
+          full20 = full20 + 1;
+        }
+      }
+      else if(user.year === 19){
+        if(user.presentState === "partial"){
+          part19 = part19 + 1;
+        }else if(user.presentState === "full"){
+          full19 = full19 + 1;
+        }
+      }
+      else if(user.year === 18){
+        if(user.presentState === "partial"){
+          part18 = part18 + 1;
+        }else if(user.presentState === "full"){
+          full18 += 1;//full18 + 1;
+        }
+      }
+      
+    });
+    res.json({part21:(part21/330)*100, full21:(full21/330)*100,part20:(part20/308)*100, full20:(full20/308)*100, part19:(part19/262)*100,full19:(full19/262)*100, part18:(part18/191)*100, full18:(full18/191)*100});
+});
+
 })
 
+app.get('/total', function(req,res){
+  User.find({presentState : {$ne : null}}, function(err, foundUsers){
+    if(err){
+      console.log(err);
+    }else{
+      if(foundUsers){
+        // var partiallyVaccinated;
+        // var fullyVaccinated;
+        // foundUsers.forEach(function(users){
+        //   if(users.present)
+        // });
+        res.json({registered : foundUsers.length});
+      }
+    }
+  });
+
+})
 ///////       Post Methods        //////////
 
 
@@ -194,6 +255,9 @@ app.listen(port, function(){
   console.log("Server running on port " + String(port));
 });
 
+// app.get('/logout', function(req,res){
+//   res.redirect('/');
+// })
 // });
 
 // app.post('/submit', function(req,res){
