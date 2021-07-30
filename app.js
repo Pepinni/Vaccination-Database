@@ -162,7 +162,7 @@ app.get('/form', function(req,res){
           break;
       }
   };
-  studentName = _.upperFirst(name.substr(1,num));
+  var studentName = _.upperFirst(name.substr(1,num));
     res.render('form' ,{presentState : req.user.presentState, studentName : studentName});
   }else{
     res.redirect('/');
