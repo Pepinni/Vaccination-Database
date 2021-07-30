@@ -218,6 +218,32 @@ app.get('/total', function(req,res){
   });
 
 })
+
+app.get('/vaccine', function(req,res){
+  User.find({brand : {$ne : null}}, function(err,foundUsers){
+    if(err){
+      console.log(err);
+    }else{
+      if(foundUsers){
+        let covishield = 0;
+        let covaxin = 0;
+        let other = 0;
+        foundUsers.forEach(function(user){
+          if(user.brand === "Covishield"){
+            covishield += 1;
+          }else if(user.brand === "Covaxin"){
+          covaxin += 1;
+          }
+          else{
+          other += 1;
+          }
+        })
+        res.json({covishield : covishield, covaxin : covaxin, other : other});
+
+      }
+    }
+  });
+});
 ///////       Post Methods        //////////
 
 

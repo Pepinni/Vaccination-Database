@@ -140,7 +140,7 @@ const config = {
 $.get('/yearwise', function(DATA){
     const partial = DATA.part21+ DATA.part20+DATA.part19+DATA.part18;
     const full = DATA.full21+ DATA.full20 + DATA.full19 + DATA.full18;
-    alert("Partial = " + String(partial) +" and full = " + String(full));
+    // alert("Partial = " + String(partial) +" and full = " + String(full));
 
     const data = {
         labels: [
@@ -177,5 +177,58 @@ $.get('/yearwise', function(DATA){
       )
 });
 
+$.get('/vaccine', function(DATA){
+    const covishield = DATA.covishield;
+    const covaxin = DATA.covaxin;
+    const other = DATA.other;
 
+    const labels = ["Covishield", "Covaxin", "Other"];
+    const data = {
+    labels: labels,
+    datasets: [{
+        axis: 'y',
+        label: "My first Dataset",
+        data: [covishield, covaxin, other],
+        fill: false,
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        ],
+        borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(54, 162, 235)',
+        ],
+        borderWidth: 1,
+    }]
+    };
 
+    const config = {
+        type: 'bar',
+        data,
+        options : {
+            indexAxis: 'y',
+            legend : {
+                display : false,
+            },
+            plugins :{    
+                title: {
+                    display: true,
+                    text: 'Vaccine Distribution'
+                },
+                deferred: {
+                    xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                    yOffset: '50%', // defer until 50% of the canvas height are inside the viewport
+                    delay: 100000,    // delay of 500 ms after the canvas is considered inside the viewport
+                  }
+            },
+                aspectRatio : 1,
+            },
+      };
+
+      var mychart = new Chart(
+        document.querySelector(".vaccines"),
+        config,
+    )
+});
