@@ -134,6 +134,9 @@ User.find({}, function(err,foundUsers){
 });
 });
 
+app.get('/favicon.ico', function(req,res){
+  res.redirect('/');
+})
 
 //////        Google Authentication       /////////
 app.get('/auth/google', passport.authenticate('google', {
