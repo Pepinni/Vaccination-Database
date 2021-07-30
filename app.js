@@ -72,7 +72,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://agile-plateau-47053.herokuapp.com/auth/google/secrets",
+    callbackURL: "https://iit-mandi-vaccination-database.herokuapp.com/auth/google/secrets",
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ username: profile.id},
