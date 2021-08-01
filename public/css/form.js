@@ -137,8 +137,8 @@ const config = {
 
 
 /////Pie chart for total IIT Mandi population/////////
-$.get('/yearwise', function(DATA){
-    const partial = DATA.part21+ DATA.part20+DATA.part19+DATA.part18;
+$.get('/btech', function(DATA){
+    const partial = DATA.part21+ DATA.part20+ DATA.part19+ DATA.part18;
     const full = DATA.full21+ DATA.full20 + DATA.full19 + DATA.full18;
     // alert("Partial = " + String(partial) +" and full = " + String(full));
 

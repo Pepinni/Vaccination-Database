@@ -213,6 +213,53 @@ app.get('/yearwise', function(req,res){
 
 })
 
+app.get('/btech', function(req,res){
+  let part21 = 0;
+  let part20 = 0;
+  let part19 = 0;
+  let part18 = 0;
+  let full21 = 0;
+  let full20 = 0;
+  let full19 = 0;
+  let full18 = 0;
+
+  User.find({}, function(err,foundUsers){
+    foundUsers.forEach(function(user){
+      if(user.year === 21){
+        if(user.presentState === "partial"){
+          part21 = part21 + 1;
+        }else if(user.presentState === "full"){
+          full21 = full21 + 1;
+        }
+      }
+      else if(user.year === 20){
+        if(user.presentState === "partial"){
+          part20 = part20 + 1;
+        }else if(user.presentState === "full"){
+          full20 = full20 + 1;
+        }
+      }
+      else if(user.year === 19){
+        if(user.presentState === "partial"){
+          part19 = part19 + 1;
+        }else if(user.presentState === "full"){
+          full19 = full19 + 1;
+        }
+      }
+      else if(user.year === 18){
+        if(user.presentState === "partial"){
+          part18 = part18 + 1;
+        }else if(user.presentState === "full"){
+          full18 = full18 + 1;
+        }
+      }
+      
+    });
+    res.json({part21:part21, full21:full21 , part20:part20 , full20 : full20 , part19 : part19 , full19 : full19 , part18 : part18 , full18 : full18 });
+});
+
+})
+
 app.get('/total', function(req,res){
   User.find({presentState : {$ne : null}}, function(err, foundUsers){
     if(err){
