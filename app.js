@@ -129,7 +129,7 @@ User.find({}, function(err,foundUsers){
     
   });
 
-  res.render('home', {part21:(part21/330)*100, full21:(full21/330)*100,part20:(part20/308)*100, full20:(full20/308)*100, part19:(part19/262)*100,full19:(full19/262)*100, part18:(part18/191)*100, full18:(full18/191)*100});
+  res.render('home', {part21:part21, full21:full21,part20:part20, full20:full20, part19:part19,full19:full19, part18:part18, full18:full18});
 });
 });
 
