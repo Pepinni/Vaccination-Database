@@ -95,6 +95,7 @@ $.get('/yearwise', function(DATA){
         borderColor: "rgb(255,99,132)",  
         stack: 'Stack 0',
     },
+    
     {
         label: 'Fully Vaccinated',
         data: [fb21 , fb20, fb19, fb18],
@@ -150,7 +151,7 @@ $.get('/btech', function(DATA){
         ],
         datasets: [{
           label: 'Vaccinated ratio',
-          data: [partial, full, 761-(full+partial)],
+          data: [partial, full, 1061-(full+partial)],
           backgroundColor: [
               'rgb(54, 162, 235)',
               'rgb(255, 99, 132)',

@@ -142,7 +142,7 @@ $.get('/btech', function(DATA){
         ],
         datasets: [{
           label: 'Vaccinated ratio',
-          data: [partial, full, 761-(full+partial)],
+          data: [partial, full, 1061-(full+partial)],
           backgroundColor: [
               'rgb(54, 162, 235)',
               'rgb(255, 99, 132)',
